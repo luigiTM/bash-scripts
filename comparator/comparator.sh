@@ -3,7 +3,7 @@
 verbose='false'
 
 usage() {
-	echo -e "Programa para comparação de dois arquivos.\nBasta colocar dois arquivos em uma pasta e ao executar o programa será\nescaneado os diretórios a partir do diretótio em que se encontra o\nscript.\n\nFlags:\nv Modo verboso"
+	echo -e "Programa para comparação de dois arquivos de texto.\nBasta colocar dois arquivos em uma pasta e ao executar o programa será\nescaneado os diretórios a partir do diretótio em que se encontra o\nscript.\n\nFlags:\nv Modo verboso"
 }
 
 while getopts 'vh' flag; do
