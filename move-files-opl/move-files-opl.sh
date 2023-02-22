@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ $1 -eq 0 ]
+if [ -z "$1" ]
   then
     echo "No mount device supplied"
 fi
