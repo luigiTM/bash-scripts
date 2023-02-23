@@ -1,9 +1,19 @@
 #!/bin/bash
 
+clean='false'
+
 if [ -z "$1" ]
   then
     echo "No mount device supplied"
 fi
+
+while getopts 'c' flag; do
+  case "${flag}" in
+      c) clean='true' ;;
+      *) usage
+        exit 1 ;;
+  esac
+done
 
 folders=( POPS CD DVD )
 
@@ -23,9 +33,14 @@ for i in "${folders[@]}"
 do
     SRC="/mnt/$i"
     DEST="/media/opl/$i"
-    if [ "$(ls -A $SRC)" ]; then
-        echo "Moving $i games"
-        cp /mnt/$i/* /media/opl/$i/ --verbose
+    if [ "$(ls -A $SRC)" ];
+        then
+            echo "Moving $i games"
+            cp /mnt/$i/* /media/opl/$i/ --verbose
+            if $clean;
+                then
+                    rm $SRC/* -v
+            fi
 	else
         echo "$SRC is empty"
 	fi
