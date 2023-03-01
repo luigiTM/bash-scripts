@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+shopt -s globstar
 
 debug=true
 
@@ -7,8 +8,9 @@ path=$1
 pattern=$2
 
 list_paths() {    
-    for folder in `ls -d */ | sed 's! !\\ !g'`
+    for folder in *;
     do
+        [[ ! -d $folder ]] && continue
         if [ $debug = true ]; then
             echo "Entering $folder"
         fi
