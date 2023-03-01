@@ -5,15 +5,8 @@ clean='false'
 if [ -z "$1" ]
   then
     echo "No mount device supplied"
+    exit
 fi
-
-while getopts 'c' flag; do
-  case "${flag}" in
-      c) clean='true' ;;
-      *) usage
-        exit 1 ;;
-  esac
-done
 
 folders=( POPS CD DVD )
 
