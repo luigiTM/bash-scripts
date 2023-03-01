@@ -1,13 +1,13 @@
 #!/bin/bash
 set -e
 
-debug=false
+debug=true
 
 path=$1
 pattern=$2
 
 list_paths() {    
-    for folder in `ls -d */`
+    for folder in `ls -d */ | sed 's! !\\ !g'`
     do
         if [ $debug = true ]; then
             echo "Entering $folder"
