@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 checkout_branch=$1
 
