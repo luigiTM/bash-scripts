@@ -6,8 +6,10 @@ debug=true
 
 path=$1
 pattern=$2
+iteration=0
 
-list_paths() {    
+list_paths() {
+    local folder
     for folder in *;
     do
         [[ ! -d $folder ]] && continue
@@ -25,17 +27,24 @@ list_paths() {
             if [ $debug = true ]; then
                 echo "Folder name will be $new_name"
             else
+                if [ $debug = true ]; then
+                    echo "Exiting $folder to rename"
+                fi
                 cd ..
                 mv "$folder" "$new_name"
             fi
         else
+            if [ $debug = true ]; then
+                echo "Exiting $folder"
+            fi
             cd ..
         fi
     done
 }
 
 list_files() {
-    for file in `ls -p | egrep -v /$`
+    local file
+    for file in `find * -maxdepth 0 -type f`
     do
         if [ $debug = true ]; then
             echo "File found => $file"
@@ -70,3 +79,4 @@ fi
 cd $path
 
 list_paths
+list_files
