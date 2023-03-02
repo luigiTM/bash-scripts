@@ -44,8 +44,7 @@ list_paths() {
 
 list_files() {
     local file
-    for file in `find * -maxdepth 0 -type f`
-    do
+    find * -maxdepth 0 -type f -name '*.*' -print0 | while IFS= read -r -d '' file; do
         if [ $debug = true ]; then
             echo "File found => $file"
         fi
