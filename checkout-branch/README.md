@@ -1,1 +1,1 @@
-# Branch checkouy
+# Branch checkout
